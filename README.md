@@ -19,6 +19,7 @@ Este proyecto implementa un juego de Tic-Tac-Toe multijugador en terminal utiliz
 - **Formato de mensajes:** JSON
 - **Persistencia:** Archivos JSON
 - **Autenticación:** Cookies
+- **Serializacion:** GSON
 
 ## Instalación y Ejecución
 
