@@ -25,6 +25,7 @@ Este proyecto implementa un juego de Tic-Tac-Toe multijugador en terminal utiliz
 ### Requisitos previos
 
 - Tener instalado Java (versión 8 o superior).
+- Librería Gson
 - Clonar el repositorio:
 
 ```bash
@@ -53,7 +54,7 @@ El protocolo se basa en el intercambio de mensajes JSON, donde cada mensaje incl
 
 ```json
 {
-  "action": "makeMove",
+  "action": "move",
   "data": {
     "gameId": "1234",
     "player": "X",
@@ -77,6 +78,10 @@ El protocolo se basa en el intercambio de mensajes JSON, donde cada mensaje incl
   }
 }
 ```
+
+## Diagrama de flujo de arquitectura
+
+![diagrama de flujo de arquitectura](/images/df-tic.png)
 
 ## Cómo Jugar:
 
