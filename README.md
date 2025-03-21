@@ -2,15 +2,15 @@
 
 ## Descripción
 
-Este proyecto implementa un juego de Tic-Tac-Toe multijugador utilizando sockets TCP para la comunicación entre clientes y servidor. Incluye autenticación con persistencia de sesión mediante cookies y un protocolo de comunicación personalizado.
+Este proyecto implementa un juego de Tic-Tac-Toe multijugador en terminal utilizando sockets TCP para la comunicación entre clientes y servidor. Incluye autenticación con persistencia de sesión mediante cookies y un protocolo de comunicación personalizado.
 
 ## Características
 
-- ✅ Sistema de registro e inicio de sesión con manejo de cookies.
-- ✅ Comunicación bidireccional cliente-servidor utilizando sockets.
-- ✅ Diseño de un protocolo sencillo basado en JSON para intercambio de datos.
-- ✅ Persistencia del estado del juego mediante un archivo JSON (game_state.json).
-- ✅ Sincronización en tiempo real entre múltiples clientes.
+- Sistema de registro e inicio de sesión con manejo de cookies.
+- Comunicación bidireccional cliente-servidor utilizando sockets.
+- Diseño de un protocolo sencillo basado en JSON para intercambio de datos.
+- Persistencia del estado del juego mediante un archivo JSON (game_state.json).
+- Sincronización en tiempo real entre múltiples clientes.
 
 ## Tecnologías utilizadas
 
@@ -82,13 +82,13 @@ El protocolo se basa en el intercambio de mensajes JSON, donde cada mensaje incl
 
 1. Inicia el servidor: java Server
 2. Inicia los clientes: java Client1 y Java Clien2
-3. Espera un oponente (El resgitro e inicio de sesión se haran por defecto, generando usuario y contraseña para cada cliente cuando ejecutas la clase respectiva).
+3. Esperar a que un oponente se conecte. El registro e inicio de sesión se realizan automáticamente, generando un usuario y contraseña para cada cliente al ejecutar su clase correspondiente (Client1/Client2).
 4. Juega introduciendo coordenadas (x,y) desde la terminal (ej. 1,2 para fila 1, columna 2), una a la vez.
 5. Realizar movimientos en el tablero hasta que un jugador gane o se declare un empate.
 
 ## Autenticación y Sesión
 
-- Los usuarios se registran e inician sesión con un nombre de usuario y contraseña.
+- Los usuarios se registran e inician sesión automáticamente al conectarse al servidor (cambio considerado).
 - El servidor genera un sessionId que el cliente envía en cada solicitud.
 - Las sesiones se gestionan mediante cookies para evitar reautenticaciones innecesarias.
 
