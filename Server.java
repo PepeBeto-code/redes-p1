@@ -13,7 +13,6 @@ public class Server {
     private static CookieManager cookies;
     private static Game game;
 
-
     public static void main(String[] args) throws IOException {
         authService = new AuthService();
         cookies = new CookieManager();
@@ -33,7 +32,8 @@ public class Server {
         }
     }
 
-    // Método para enviar el mensaje a todos los clientes excepto al que envió la jugada
+    // Método para enviar el mensaje a todos los clientes excepto al que envió la
+    // jugada
     private static void broadcastMessage(JsonObject message, Socket excludeSocket) {
         // Iterar sobre todos los clientes
         for (ClientHandler client : clients) {
@@ -43,15 +43,12 @@ public class Server {
         }
     }
 
-
-
     static class ClientHandler extends Thread {
         private Socket socket;
         private BufferedReader in;
         private PrintWriter out;
 
         private Gson gson = new Gson();
-
 
         public ClientHandler(Socket socket) throws IOException {
             this.socket = socket;
@@ -62,11 +59,10 @@ public class Server {
         @Override
         public void run() {
             try {
-               // out.println("Bienvenido al servidor de Tic-Tac-Toe!");
+                // out.println("Bienvenido al servidor de Tic-Tac-Toe!");
                 String message;
 
                 while ((message = in.readLine()) != null) {
-
 
                     JsonObject request = gson.fromJson(message, JsonObject.class);
                     String action = request.get("action").getAsString();
@@ -80,7 +76,7 @@ public class Server {
                         String sessionId = data.get("gameId").getAsString();
                         if (cookies.validateSession(sessionId)) {
                             handleMove(data);
-                        }else{
+                        } else {
                             out.println("Id invalido, inicia sesion");
                         }
                     }
@@ -131,9 +127,9 @@ public class Server {
             if (authService.register(username, password) || authService.getUsers().containsKey(username)) {
                 response.addProperty("status", "success");
                 JsonObject dataResponse = new JsonObject();
-                if (authService.getUsers().containsKey(username)){
+                if (authService.getUsers().containsKey(username)) {
                     dataResponse.addProperty("message", "El usuario estaba previamente registrado");
-                }else {
+                } else {
                     dataResponse.addProperty("message", "Usuario registrado correctamente.");
                 }
                 response.add("data", dataResponse);
@@ -154,10 +150,10 @@ public class Server {
 
             JsonObject response = new JsonObject();
 
-            System.out.println("Game Current: "+game.getCurrentPlayer()+" Client: "+player.charAt(0));
+            System.out.println("Game Current: " + game.getCurrentPlayer() + " Client: " + player.charAt(0));
 
-            if (game.getCurrentPlayer() == player.charAt(0)){
-                if (game.makeMove(player, row, col)){
+            if (game.getCurrentPlayer() == player.charAt(0)) {
+                if (game.makeMove(player, row, col)) {
 
                     response.addProperty("status", "success");
                     JsonObject dataResponse = new JsonObject();
@@ -172,19 +168,18 @@ public class Server {
                     message.add("data", dataResponse);
 
                     broadcastMessage(message, this.socket);
-                }else{
+                } else {
                     response.addProperty("status", "error");
                     JsonObject dataResponse = new JsonObject();
                     dataResponse.addProperty("message", "Jugada inválida. Intenta de nuevo.");
                     response.add("data", dataResponse);
                 }
-            }else{
+            } else {
                 response.addProperty("status", "error");
                 JsonObject dataResponse = new JsonObject();
                 dataResponse.addProperty("message", "Espera tu turno");
                 response.add("data", dataResponse);
             }
-
 
             out.println(gson.toJson(response));
         }
@@ -197,7 +192,8 @@ public class Server {
         public void closeConnection() {
             try {
                 clients.remove(this); // Eliminamos el cliente de la lista
-                if (this.socket != null) this.socket.close();
+                if (this.socket != null)
+                    this.socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

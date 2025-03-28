@@ -26,25 +26,39 @@ Este proyecto implementa un juego de Tic-Tac-Toe multijugador en terminal utiliz
 ### Requisitos previos
 
 - Tener instalado Java (versión 8 o superior).
-- Librería Gson
 - Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/tic-tac-toe-sockets.git
-cd tic-tac-toe-sockets
+git clone https://github.com/PepeBeto-code/redes-p1.git
+cd redes-p1
+```
+
+## Compila los archivos del proyecto
+
+- Desde la raíz del proyecto, ejecuta:
+
+```bash
+javac -cp lib/gson-2.11.0.jar *.java
 ```
 
 ### Ejecución del servidor
 
+- En la misma carpeta, inicia el servidor con:
+
 ```bash
-java -jar servidor.jar
+java -cp ".;lib/gson-2.11.0.jar" Server
 ```
 
-### Ejecución de los clientes
+## Ejecuta los clientes
+
+- Abre nuevas terminales para cada cliente y ejecuta:
 
 ```bash
-java -jar cliente1.jar
-java -jar cliente2.jar
+java -cp ".;lib/gson-2.11.0.jar" Client1
+```
+
+```bash
+java -cp ".;lib/gson-2.11.0.jar" Client2
 ```
 
 ## Protocolo de Comunicación:
@@ -103,3 +117,10 @@ El protocolo se basa en el intercambio de mensajes JSON, donde cada mensaje incl
 El servidor almacena el estado del juego en game_state.json, lo que permite restaurar la partida en caso de reinicio del servidor.
 
 ## Capturas de Pantalla
+
+![Ejecucion del servidor](/images/runserver.png)
+![Servidor en ejecucion](/images/server.png)
+![Inicia el juego el cliente 1](/images/client1init.png)
+![Inicia el juego el cliente 2](/images/client2init.png)
+![Termina el juego el cliente 1](/images/client1finit.png)
+![Termina el juego el cliente 2](/images/client2finit.png)
