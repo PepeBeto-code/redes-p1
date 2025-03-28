@@ -122,5 +122,5 @@ El servidor almacena el estado del juego en game_state.json, lo que permite rest
 ![Servidor en ejecucion](/images/server.png)
 ![Inicia el juego el cliente 1](/images/client1init.png)
 ![Inicia el juego el cliente 2](/images/client2init.png)
-![Termina el juego el cliente 1](/images/client1finit.png)
 ![Termina el juego el cliente 2](/images/client2finit.png)
+![Termina el juego el cliente 1](/images/client1finit.png)
